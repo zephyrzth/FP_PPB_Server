@@ -28,4 +28,5 @@ Route::post('register', 'API\UserController@register');
 Route::group(['middleware' => 'auth:api'], function(){
     Route::post('whoami', 'API\UserController@whoami');
     Route::post('store', [ItemController::class, 'store']);
+    Route::get('list/{id}', [ItemController::class, 'toko']);
 });

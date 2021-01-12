@@ -51,4 +51,10 @@ class ItemController extends Controller
         $data = Item::all();
         return response()->json(['status' => "success", 'data' => $data], 200);
     }
+
+    public function toko($id)
+    {
+        $data = Item::where('user_id', $id)->get();
+        return response()->json(['status' => "success", 'data' => $data], 200);
+    }
 }
