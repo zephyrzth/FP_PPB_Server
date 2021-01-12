@@ -19,7 +19,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('store', [ItemController::class, 'store']);
 Route::get('show/{id}', [ItemController::class, 'show']);
 Route::get('list', [ItemController::class, 'list']);
 
@@ -27,5 +26,6 @@ Route::post('login', 'API\UserController@login');
 Route::post('register', 'API\UserController@register');
 
 Route::group(['middleware' => 'auth:api'], function(){
-	Route::post('whoami', 'API\UserController@whoami');
+    Route::post('whoami', 'API\UserController@whoami');
+    Route::post('store', [ItemController::class, 'store']);
 });
