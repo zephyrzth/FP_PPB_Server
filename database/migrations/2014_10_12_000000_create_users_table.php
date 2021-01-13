@@ -17,6 +17,8 @@ class CreateUsersTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
+            $table->double('latitude')->default(-7.282356);
+            $table->double('longitude')->default(112.7949253);
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
