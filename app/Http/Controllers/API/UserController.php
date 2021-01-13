@@ -17,6 +17,7 @@ class UserController extends Controller
         if(Auth::attempt(['email' => request('email'), 'password' => request('password')])){
             $user = Auth::user();
             $success['token'] =  $user->createToken('nApp')->accessToken;
+            $success['id'] = $user->id;
             return response()->json(['status' => "success", 'message' => "Berhasil login", 'data' => $success], $this->successStatus);
         }
         else{

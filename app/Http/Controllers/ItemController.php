@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Item;
 use App\Rules\Base64Image;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
@@ -31,7 +32,7 @@ class ItemController extends Controller
         Storage::put('public/items/' . $filename, base64_decode($photofile));
         // $request->file('photofile')->storeAs('public/photos', $filename);
         Item::create([
-            'user_id' => 1,
+            'user_id' => Auth::user()->id,
             'judul' => $judul,
             'harga' => $harga,
             'filename' => $filename,
